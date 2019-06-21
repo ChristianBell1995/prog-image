@@ -27,4 +27,10 @@ class ImageUploader < Shrine
     versions
   end
 
+  def generate_location(io, context)
+    filename = context[:record].filename
+    ext = File.extname(context[:metadata]['filename'])
+    p filename + ext
+    filename + ext
+  end
 end
