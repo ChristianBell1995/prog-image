@@ -13,6 +13,9 @@ gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 gem 'shrine', '~> 2.0'
+
+gem "image_processing", "~> 1.0"
+gem "mini_magick", "~> 4.0"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production

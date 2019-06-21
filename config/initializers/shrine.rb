@@ -15,3 +15,6 @@ Shrine.storages = {
 
 Shrine.plugin :activerecord
 Shrine.plugin :determine_mime_type
+# Shrine.plugin :backgrounding
+
+# Shrine::Attacher.promote { |data| PromoteJob.perform_async(data) }
