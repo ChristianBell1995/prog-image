@@ -4,9 +4,14 @@ class V1::ImagesController < ApplicationController
   end
 
   def create
-    @image = Image.create(image: create_image_params[:file])
+    return unless current_user.present?
+    @image = current_user.images.create(image: create_image_params[:file])
 
-    render json: @image.image, status: :created
+    render json: @image.render_json, status: :created
+  end
+
+  def change_mime_type
+
   end
 
   private

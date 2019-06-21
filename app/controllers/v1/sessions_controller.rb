@@ -9,6 +9,15 @@ class V1::SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    current_user&.authentication_token = nil
+    if current_user.save
+      head(:ok)
+    else
+      head(:unauthorized)
+    end
+  end
+
   private
 
   def user_params
