@@ -7,6 +7,8 @@ ruby '2.5.3'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
 gem 'aws-sdk-s3', '~> 1.14'
+gem 'devise'
+gem 'simple_token_authentication', '~> 1.0'
 gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
