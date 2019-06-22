@@ -39,9 +39,14 @@ class V1::ImagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'create\'s image (ICO)' do
+  test 'create\'s image associated with the user' do
+    user = users(:one)
     file = fixture_file_upload('files/grand_budapest_hotel.ico', 'image/ico')
     post v1_images_path, headers: @header, params: { file: file }
-    assert_response :success
+
+    response = JSON.parse(@response.body)
+
+    assert response['user_id'] == user.id
+    assert response['id'] == user.images.last.id
   end
 end
