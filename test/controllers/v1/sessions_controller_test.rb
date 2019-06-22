@@ -3,12 +3,15 @@ require 'test_helper'
 class V1::ImagesControllerTest < ActionDispatch::IntegrationTest
   setup do
     user = users(:one)
+  end
 
-    @header = {
-      'X-User-Email': user.email,
-      'X-User-Token': user.authentication_token
-    }
+  test 'sign\'s in user and returns the token and email' do
+    session_params = { email: user.email, password: user.password }
+    post(v1_sessions_path, params: { session_params })
 
-    test 'sign\'s in user and returns the token and email'
+    response = JSON.parse(@response.body)
+
+    assert response['email'] == user.email
+    assert response['authentication_token'] == user.authentication_token
   end
 end

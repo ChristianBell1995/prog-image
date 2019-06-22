@@ -6,6 +6,8 @@
 #
 one:
   email: 'test@email.com'
+  password: testing123
   authentication_token: 'testtoken123'
+
 # column: value
 #
