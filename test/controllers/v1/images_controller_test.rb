@@ -9,9 +9,38 @@ class V1::ImagesControllerTest < ActionDispatch::IntegrationTest
     }
   end
 
-  test 'create\'s image record and uploads variety of files' do
-    file = fixture_file_upload('files/grand_budapest_hotel', 'image/jpg')
+  test 'create\'s image (JPG)' do
+    file = fixture_file_upload('files/grand_budapest_hotel.jpg', 'image/jpg')
+    post v1_images_path, headers: @header, params: { file: file }
+    assert_response :success
+  end
 
+  test 'create\'s image (JPEG)' do
+    file = fixture_file_upload('files/grand_budapest_hotel.jpeg', 'image/jpeg')
+    post v1_images_path, headers: @header, params: { file: file }
+    assert_response :success
+  end
+
+  test 'create\'s image (PNG)' do
+    file = fixture_file_upload('files/grand_budapest_hotel.png', 'image/png')
+    post v1_images_path, headers: @header, params: { file: file }
+    assert_response :success
+  end
+
+  test 'create\'s image (TIFF)' do
+    file = fixture_file_upload('files/grand_budapest_hotel.tiff', 'image/tiff')
+    post v1_images_path, headers: @header, params: { file: file }
+    assert_response :success
+  end
+
+  test 'create\'s image (GIF)' do
+    file = fixture_file_upload('files/grand_budapest_hotel.gif', 'image/gif')
+    post v1_images_path, headers: @header, params: { file: file }
+    assert_response :success
+  end
+
+  test 'create\'s image (ICO)' do
+    file = fixture_file_upload('files/grand_budapest_hotel.ico', 'image/ico')
     post v1_images_path, headers: @header, params: { file: file }
     assert_response :success
   end
