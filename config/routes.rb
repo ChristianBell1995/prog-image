@@ -6,4 +6,8 @@ Rails.application.routes.draw do
     resource :sessions, only: [:create, :destroy]
   end
 
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end

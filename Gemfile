@@ -16,6 +16,9 @@ gem 'shrine', '~> 2.0'
 
 gem "image_processing", "~> 1.0"
 gem "mini_magick", "~> 4.0"
+
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
