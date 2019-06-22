@@ -12,15 +12,14 @@ class ImageUploader < Shrine
     original = io.download
 
     # create thumb image
-    thumb = ImageProcessing::MiniMagick
-      .source(original)
-      .resize_to_limit!(200, 200)
-    versions[:thumb] = thumb
+    # thumb = ImageProcessing::MiniMagick
+    #   .source(original)
+    #   .resize_to_limit!(200, 200)
+    # versions[:thumb] = thumb
 
     # create different mime_types
-    IMAGE_EXTENSIONS = %w[jpg png jpeg gif tiff]
     pipeline = ImageProcessing::Vips.source(original)
-    IMAGE_EXTENSIONS.each do |ext|
+    Image::IMAGE_EXTENSIONS.each do |ext|
       versions[ext.to_sym] = pipeline.convert!(ext)
     end
 
@@ -30,7 +29,6 @@ class ImageUploader < Shrine
   def generate_location(io, context)
     filename = context[:record].filename
     ext = File.extname(context[:metadata]['filename'])
-    p filename + ext
     filename + ext
   end
 end
