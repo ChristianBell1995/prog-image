@@ -1,4 +1,6 @@
 require 'test_helper'
+require 'sidekiq/testing'
+Sidekiq::Testing.inline!
 
 class V1::ImagesControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -41,12 +43,23 @@ class V1::ImagesControllerTest < ActionDispatch::IntegrationTest
 
   test 'create\'s image associated with the user' do
     user = users(:one)
-    file = fixture_file_upload('files/grand_budapest_hotel.ico', 'image/ico')
+    file = fixture_file_upload('files/grand_budapest_hotel.png', 'image/png')
     post v1_images_path, headers: @header, params: { file: file }
 
     response = JSON.parse(@response.body)
 
     assert response['user_id'] == user.id
     assert response['id'] == user.images.last.id
+  end
+
+  test 'newly created image has correct ext names in image_data JSON' do
+    user = users(:one)
+    file = fixture_file_upload('files/grand_budapest_hotel.png', 'image/png')
+    post v1_images_path, headers: @header, params: { file: file }
+
+    image_data = JSON.parse(user.images.last.image_data)
+    image_ext = image_data.map(&:first)[1..-1]
+
+    assert image_ext == Image::IMAGE_EXTENSIONS
   end
 end
