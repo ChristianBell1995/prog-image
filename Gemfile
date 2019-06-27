@@ -19,6 +19,8 @@ gem "mini_magick", "~> 4.0"
 
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
+gem 'sidekiq-status'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production

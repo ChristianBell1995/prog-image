@@ -1,4 +1,5 @@
 class ProcessingJob < ApplicationJob
+  include Sidekiq::Status::Worker
   queue_as :default
 
   def perform(data)

@@ -16,5 +16,6 @@ Shrine.storages = {
 Shrine.plugin :activerecord
 Shrine.plugin :determine_mime_type
 Shrine.plugin :backgrounding
-
-Shrine::Attacher.promote { |data| ProcessingJob.perform_later(data) }
+Shrine.plugin :processing
+Shrine.plugin :versions
+Shrine.plugin :validation_helpers
