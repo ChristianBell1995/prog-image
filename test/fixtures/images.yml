@@ -4,9 +4,14 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
+still_processing:
   id: 1
-  email: 'test@email.com'
-  authentication_token: 'testtoken123'
-  encrypted_password: <%= User.new.send(:password_digest, 'testing123') %>
+  user_id: 1
+  filename: '1/qV8Z8sGozL48wjg7z9QRCQ/qV8Z8sGozL48wjg7z9QRCQ'
+  status: 0
 
+uploaded:
+  id: 2
+  user_id: 2
+  filename: '1/4MiNi8P__zQo9CAasyk2wg/4MiNi8P__zQo9CAasyk2wg'
+  status: 1

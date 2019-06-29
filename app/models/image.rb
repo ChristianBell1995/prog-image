@@ -5,7 +5,7 @@ class Image < ApplicationRecord
 
   belongs_to :user
 
-  IMAGE_EXTENSIONS = %w[jpg png jpeg gif tiff]
+  IMAGE_EXTENSIONS = %i[jpg png jpeg gif tiff]
   IMAGE_MIME_TYPES = %w[image/jpg image/png image/jpeg image/gif image/tiff]
 
   STATUS_UPLOADED = 1
@@ -48,7 +48,7 @@ class Image < ApplicationRecord
     end
 
     def check_job_processing(worker, image)
-      if image_worker.empty?
+      if worker.empty?
         image.update(status: STATUS_UPLOADED)
       else
         job_id = worker.dig(0, 2, 'payload', 'jid')
