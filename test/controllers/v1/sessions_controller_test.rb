@@ -20,9 +20,8 @@ class V1::ImagesControllerTest < ActionDispatch::IntegrationTest
     assert response['authentication_token'] == user.authentication_token
   end
 
-
   test 'destroy\'s user session and resets the token' do
-    delete v1_sessions_path,  headers: @header
+    delete v1_sessions_path, headers: @header
     assert_response :success
   end
 end

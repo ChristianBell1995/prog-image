@@ -61,7 +61,7 @@ class V1::CreateTest < ActionDispatch::IntegrationTest
   end
 
   test 'GET v1/images, displays image records with status of uploaded, if uploaded' do
-    image = images(:uploaded)
+    images(:uploaded)
     get v1_images_path, headers: @header
 
     first_image = JSON.parse(@response.body).first
@@ -71,7 +71,7 @@ class V1::CreateTest < ActionDispatch::IntegrationTest
   end
 
   test 'GET v1/images, updates image records to status of uploaded, if worker is finished' do
-    image = images(:still_processing)
+    images(:still_processing)
     get v1_images_path, headers: @header
 
     first_image = JSON.parse(@response.body).first

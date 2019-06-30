@@ -5,14 +5,14 @@ class Image < ApplicationRecord
 
   belongs_to :user
 
-  IMAGE_EXTENSIONS = %i[jpg png jpeg gif tiff]
-  IMAGE_MIME_TYPES = %w[image/jpg image/png image/jpeg image/gif image/tiff]
+  IMAGE_EXTENSIONS = %i[jpg png jpeg gif tiff].freeze
+  IMAGE_MIME_TYPES = %w[image/jpg image/png image/jpeg image/gif image/tiff].freeze
 
   STATUS_UPLOADED = 1
   IMAGE_STATUS_MAPPING = {
     0 => 'Still Processing...',
     1 => 'Uploaded!'
-  }
+  }.freeze
 
   def render_json
     { tracking_id: id, user_id: user_id, message: 'Your image is being processed!' }
@@ -52,7 +52,7 @@ class Image < ApplicationRecord
         image.update(status: STATUS_UPLOADED)
       else
         job_id = worker.dig(0, 2, 'payload', 'jid')
-        job_status = Sidekiq::Status::get job_id, :status
+        job_status = Sidekiq::Status.get job_id, :status
         image.update(status: STATUS_UPLOADED) if job_status == 'complete'
       end
     end

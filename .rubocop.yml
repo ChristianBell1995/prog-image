@@ -1,0 +1,26 @@
+Documentation:
+  Enabled: false
+Metrics/LineLength:
+  Max: 100
+  Exclude:
+    - 'config/initializers/**'
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+MethodLength:
+  Max: 100
+ClassLength:
+  Max: 250
+Metrics/ModuleLength:
+  Max: 200
+Metrics/AbcSize:
+  Max: 53
+Metrics/CyclomaticComplexity:
+  Max: 8
+Metrics/PerceivedComplexity:
+  Max: 8
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'bin/**'

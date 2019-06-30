@@ -1,5 +1,5 @@
-require "image_processing/mini_magick"
-require "image_processing/vips"
+require 'image_processing/mini_magick'
+require 'image_processing/vips'
 
 class ImageUploader < Shrine
   Attacher.promote do |data|
@@ -22,7 +22,7 @@ class ImageUploader < Shrine
     versions
   end
 
-  def generate_location(io, context)
+  def generate_location(_io, context)
     filename = context[:record].filename
     ext = File.extname(context[:metadata]['filename'])
     filename + ext
