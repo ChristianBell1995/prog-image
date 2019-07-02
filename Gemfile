@@ -13,7 +13,6 @@ gem 'rails', '~> 5.2.3'
 gem 'shrine', '~> 2.0'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
-gem 'sidekiq-status'
 gem 'simple_token_authentication', '~> 1.0'
 gem 'sqlite3'
 

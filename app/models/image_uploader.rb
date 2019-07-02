@@ -14,7 +14,7 @@ class ImageUploader < Shrine
   process(:store) do |io|
     versions = { original: io }
     original = io.download
-    # create different mime_types
+
     pipeline = ImageProcessing::Vips.source(original)
     Image::IMAGE_EXTENSIONS.each do |ext|
       versions[ext] = pipeline.convert!(ext.to_s)
