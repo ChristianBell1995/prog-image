@@ -40,6 +40,7 @@ class Image < ApplicationRecord
 
     def determine_status(image)
       return image.status if image.status == STATUS_UPLOADED
+
       image.update(status: STATUS_UPLOADED) if image.image_attacher.stored?
       image.status
     end
