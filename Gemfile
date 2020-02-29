@@ -11,7 +11,7 @@ gem 'devise'
 gem 'simple_token_authentication', '~> 1.0'
 gem 'sqlite3'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 gem 'shrine', '~> 2.0'
 
 gem "image_processing", "~> 1.0"
