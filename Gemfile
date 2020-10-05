@@ -12,7 +12,7 @@ gem 'simple_token_authentication', '~> 1.0'
 gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
-gem 'shrine', '~> 2.0'
+gem 'shrine', '~> 3.3'
 
 gem "image_processing", "~> 1.0"
 gem "mini_magick", "~> 4.0"
